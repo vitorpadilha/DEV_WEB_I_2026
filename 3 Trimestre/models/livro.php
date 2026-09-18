@@ -43,4 +43,5 @@ class Livro {
         $conn->query($sql);
     }
 }
+//https://github.com/vitorpadilha/DEV_WEB_I_2026.git
 ?>
