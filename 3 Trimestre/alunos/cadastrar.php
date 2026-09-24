@@ -29,8 +29,8 @@
               if ($a[1] === $matricula) { $erro = 'Matrícula já cadastrada.'; break; }
           }
           if (!$erro) {
-              $alunos[] = [$nome, $matricula, $sexo, $dataNasc];
-              salvarArquivo('../data/alunos.txt', $alunos);
+              $aluno = new Aluno($nome, $matricula, $sexo, $dataNasc);
+              $aluno->cadastrar($conn);
               header('Location: listar.php?msg=cadastrado');
               exit;
           }

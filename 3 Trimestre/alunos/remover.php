@@ -29,28 +29,8 @@
   require_once '../includes/funcoes.php';
   $indice = trim($_POST['excluir']);
   $qual = trim($_POST['valor']);
-  $livros = lerArquivo("emprestimos.txt");
-  $manter = [];
-  foreach($livros as $pos => $v){
-    if($indice == "no"){
-        if($v[0] !== $qual){
-            array_push($manter, $v);
-        }
-    }
-    else if($indice == "ma"){
-        if($v[1] !== $qual){
-            array_push($manter, $v);
-        }
-    }
-    else if($indice == "se"){
-        if($v[2] !== $qual){
-            array_push($manter, $v);
-        }
-  }
-    else if($indice == "na"){
-        if($v[3] !== $qual){
-        array_push($manter, $v);
-    }}}
+  $aluno = Aluno::findByMatricula($qual);
+  $aluno->remover($conn);
   ?>
 </body>
 </html>

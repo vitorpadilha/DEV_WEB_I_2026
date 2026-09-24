@@ -13,7 +13,7 @@
   <?php
   require_once '../includes/auth.php';
   require_once '../includes/funcoes.php';
-  $alunos = lerArquivo('../data/alunos.txt');
+  $alunos = Aluno::listarTodos($conn);
   $msg    = $_GET['msg'] ?? '';
   ?>
 ============================================================ -->

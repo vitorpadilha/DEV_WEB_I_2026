@@ -9,16 +9,19 @@
 <body>
 
   <?php
+  require_once '../includes/conexaobd.php';
   require_once '../includes/auth.php';
   require_once '../includes/funcoes.php';
 
   $matricula = $_GET['matricula'] ?? '';
-  $alunos    = lerArquivo('../data/alunos.txt');
-  $aluno     = null; $indice = null;
 
-  foreach ($alunos as $i => $a) {
-      if ($a[1] === $matricula) { $aluno = $a; $indice = $i; break; }
-  }
+  $aluno = Aluno::findByMatricula($conn, $matricula);
+  //$alunos    = lerArquivo('../data/alunos.txt');
+  //$aluno     = null; $indice = null;
+  
+  //foreach ($alunos as $i => $a) {
+  //    if ($a[1] === $matricula) { $aluno = $a; $indice = $i; break; }
+  //}
   if ($aluno === null) { header('Location: listar.php'); exit; }
 
   $erro = '';
@@ -31,7 +34,10 @@
           $erro = 'Preencha todos os campos obrigatórios.';
       } else {
           $alunos[$indice] = [$nome, $matricula, $sexo, $dataNasc];
-          salvarArquivo('../data/alunos.txt', $alunos);
+          $aluno->nome  = $nome;
+          $aluno->sexo = $sexo;
+          $aluno->dataNasc = $dataNasc;
+          $aluno->alterar($conn);
           header('Location: listar.php?msg=alterado');
           exit;
       }
