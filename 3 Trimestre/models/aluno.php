@@ -5,10 +5,10 @@
     public $matricula;
     public $sexo; 
     public $dataNasc;
-    public __construct(                         $nome, 
-                         $matricula, 
-                         $sexo, 
-                         $estoque) {
+    public __construct($nome, 
+                       $matricula, 
+                       $sexo, 
+                       $dataNasc) {
         $this->nome = $nome;
         $this->matricula = $matricula;
         $this->sexo = $sexo;
