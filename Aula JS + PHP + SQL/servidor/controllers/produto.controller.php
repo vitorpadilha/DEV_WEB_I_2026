@@ -2,6 +2,14 @@
 require_once './controllers/generic.controller.php';
 require_once './models/Produto.php';
 class ProdutoController extends GenericController {
+
+    private $service;
+
+    public function __construct($conn) {
+        parent::__construct($conn);
+        $this->service = new ProdutoService($conn);
+    }
+
     public function listarTodos($parametros) {
        return "Entrou no listarTodos do ProdutoController";
     }
@@ -11,6 +19,8 @@ class ProdutoController extends GenericController {
         $precoProduto = $parametros['preco'];
         $fabricanteProduto = $parametros['fabricante'];
         $produto = new Produto(null, $nomeProduto, $precoProduto, $fabricanteProduto);
+
+        $this->service->cadastrar($produto);
         return "Entrou no cadastrar do ProdutoController";
     }
 
