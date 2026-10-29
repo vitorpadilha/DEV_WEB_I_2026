@@ -4,7 +4,10 @@ abstract class GenericService {
 
     protected final $dao;
 
-    public function __construct() {
+    protected $conn;
+
+    public function __construct($conn) {
+        $this->conn = $conn;
         if($this->dao === null) {
             $this->dao = $this->getDAOPrincipal();
         }
