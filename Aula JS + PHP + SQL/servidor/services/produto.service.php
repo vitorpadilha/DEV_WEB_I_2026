@@ -1,7 +1,7 @@
 <?
 
-class ProdutoService {
-    public function listarTodos() {
+class ProdutoService extends GenericService {
+    public function listarTodos($filtros) {
         // Lógica para listar produtos do banco de dados
     }
 

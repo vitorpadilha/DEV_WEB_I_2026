@@ -1,4 +1,5 @@
 <?
+require_once './models/generic.entity.php';
 class Produto {
     private $id;
     private $nome;
