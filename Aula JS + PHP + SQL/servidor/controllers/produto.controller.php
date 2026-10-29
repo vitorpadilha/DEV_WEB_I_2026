@@ -11,7 +11,7 @@ class ProdutoController extends GenericController {
     }
 
     public function listarTodos($parametros) {
-       return "Entrou no listarTodos do ProdutoController";
+       return $this->service->listarTodos($parametros);
     }
 
     public function cadastrar($parametros) {
@@ -20,18 +20,21 @@ class ProdutoController extends GenericController {
         $fabricanteProduto = $parametros['fabricante'];
         $produto = new Produto(null, $nomeProduto, $precoProduto, $fabricanteProduto);
 
-        $this->service->cadastrar($produto);
-        return "Entrou no cadastrar do ProdutoController";
+        return $this->service->cadastrar($produto);
     }
 
     public function atualizar($parametros) {
+        $nomeProduto = $parametros['nome'];
+        $precoProduto = $parametros['preco'];
+        $fabricanteProduto = $parametros['fabricante'];
+        $produto = new Produto(null, $nomeProduto, $precoProduto, $fabricanteProduto);
         // Lógica para atualizar um produto existente no banco de dados
-        return "Entrou no atualizar do ProdutoController";
+        return $this->service->atualizar($produto);
     }
 
     public function deletar($parametros) {
         // Lógica para deletar um produto do banco de dados
-        return "Entrou no deletar do ProdutoController";
+        return $this->service->deletar($parametros['id']);
     }
 }
 
