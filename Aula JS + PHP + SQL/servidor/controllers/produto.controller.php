@@ -24,10 +24,11 @@ class ProdutoController extends GenericController {
     }
 
     public function atualizar($parametros) {
+        $id = $parametros['id'];
         $nomeProduto = $parametros['nome'];
         $precoProduto = $parametros['preco'];
         $fabricanteProduto = $parametros['fabricante'];
-        $produto = new Produto(null, $nomeProduto, $precoProduto, $fabricanteProduto);
+        $produto = new Produto($id, $nomeProduto, $precoProduto, $fabricanteProduto);
         // Lógica para atualizar um produto existente no banco de dados
         return $this->service->atualizar($produto);
     }
