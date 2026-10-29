@@ -1,13 +1,13 @@
 <?
 require_once './models/generic.entity.php';
-class Produto {
-    private $id;
+class Produto   extends GenericEntity{
+
     private $nome;
     private $preco;
     private $fabricante;
 
     public function __construct($id, $nome, $preco, $fabricante) {
-        $this->id = $id;
+        parent::__construct($id);
         $this->nome = $nome;
         $this->preco = $preco;
         $this->fabricante = $fabricante;

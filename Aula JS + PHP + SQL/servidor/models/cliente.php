@@ -1,12 +1,12 @@
 <?
 require_once './models/generic.entity.php';
-class Cliente {
-    private $id;
+class Cliente extends GenericEntity {
+
     private $nome;
     private $endereco;
 
     public function __construct($id, $nome, $endereco) {
-        $this->id = $id;
+        parent::__construct($id);
         $this->nome = $nome;
         $this->endereco = $endereco;
     }
